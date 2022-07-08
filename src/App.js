@@ -15,8 +15,8 @@ function App() {
     setAnswerState('');
   }
 
-  const handleOnClick = (e) => {
-    if(!questionState) return
+  const handleOnClick = () => {
+    if(!questionState || answerState) return
     const answerIndex = returnRandomRoundValueFromRange(0, possibleAnswersToSimpleQuestion.length);
     const answerResult = possibleAnswersToSimpleQuestion[answerIndex]
     setAnswerState(answerResult);
@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Крстина задай простой впорос на который можно ответить "да" или "нет"</p>
+        <p>Кристина, задай простой вопрос, на который можно ответить "да" или "нет"</p>
         <Label labelText="Место для вопроса">
           <Input
           inputState={questionState}
@@ -33,10 +33,10 @@ function App() {
         />
         </Label>
         <Label labelText="Нажми на кнопку - получишь результат">
-        <Button
-          buttonLabel='Получить ответ'
-          handleOnClick={handleOnClick}
-        />
+          <Button
+            buttonLabel='Получить ответ'
+            handleOnClick={handleOnClick}
+          />
         </Label>
         <Label labelText="А тут вот результат">
           <Input
